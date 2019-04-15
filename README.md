@@ -88,7 +88,11 @@ int main(int argc, char** argv)
 </pre>
 
 <p></p>
-<p>Here, glutInit() is used to initialize the GLUT library. glutInitDisplayMode() is used to declare variousmodes of display. You can add multiple modes using '|'. When using GL_SINGLE, you can picture your code drawing directly to the display having no buffers. If you use GL_DOUBLE, then you've double buffer and you can swap between buffer for smooth transition in case of rotation of movement. In case of movement you need to handle frames and GL_DOUBLE is the best option among these two for smooth transition. glutInitWindowSize() is used for initializing the window size having two paramenters: windows height and width. glutInitWindowPosition() is used to initialize the initial position of the window. glutCreateWindow() is used for creating the window with the name given inside the function. glMatrixMode() specify which matrix is the current matrix. It can have different parameters. Here, we will learn two of them: GL_MODELVIEW and GL_PROJECTION. GL_PROJECTION is used for setting your viewing volume. As for the GL_MODELVIEW matrix, it is used to make various transformations to the oject. glLoadIdentity() replaces the current matrix with an identity matrix. glutDisplayFunc() function displays whatever is defined inside the function called inside this as parameter. glutMainLoop() enters the GLUT event processing loop. Now let's move towards display function:</p>
+<p>Here, <code>glutInit()</code> is used to initialize the GLUT library. glutInitDisplayMode() is used to declare variousmodes of display. You can add multiple modes using '|'. When using GL_SINGLE, you can picture your code drawing directly to the display having no buffers. If you use GL_DOUBLE, then you've double buffer and you can swap between buffer for smooth transition in case of rotation of movement. In case of movement you need to handle frames and GL_DOUBLE is the best option among these two for smooth transition.</p>
+
+<p>glutInitWindowSize() is used for initializing the window size having two paramenters: windows height and width. glutInitWindowPosition() is used to initialize the initial position of the window. glutCreateWindow() is used for creating the window with the name given inside the function.</p>
+
+<p>glMatrixMode() specify which matrix is the current matrix. It can have different parameters. Here, we will learn two of them: GL_MODELVIEW and GL_PROJECTION. GL_PROJECTION is used for setting your viewing volume. As for the GL_MODELVIEW matrix, it is used to make various transformations to the oject. glLoadIdentity() replaces the current matrix with an identity matrix. glutDisplayFunc() function displays whatever is defined inside the function called inside this as parameter. glutMainLoop() enters the GLUT event processing loop. Now let's move towards display function:</p>
 
 <pre>
     <code>
@@ -108,7 +112,7 @@ void display(){
 </pre>
 
 <p></p>
-<p>Here, inside the display function, we define what we want to display. In this example, a triangle has been created with the corresponding functions where glBegin() denotes starting of the drawing and glEnd() denotes end of the drawing. GL_TRIANGLES refers to creating triangles. glColor3f() sets the color in RGB format where 0 denotes no color or black and 1 denotes full color or white for the three parameters R, G and B. glVertex2f() defines the point in 2D co-ordinate.</p>
+<p>Here, inside the display function, we define what we want to display. In this example, a triangle has been created with the corresponding functions where glBegin() denotes starting of the drawing and glEnd() denotes end of the drawing. GL_TRIANGLES refers to creating triangles. glColor3f() sets the color in RGB format where 0 denotes no color or black and 1 denotes full color or white for the three parameters R, G and B. glVertex2f() defines the point in 2D co-ordinate. The glFlush() function forces execution of OpenGL functions in finite time</p>
 
 
 <p>That's all you needed to know for this lab. Moving onto next one.</p>
@@ -197,7 +201,7 @@ void polygon1(){
 <p>That's how, you can create a colored leaf. There's only one thing you should bear in mind. If you use multiple colors in a polygon-type shape, all the colors of the edges will move towards the color of that edge with which you started to draw the polygon.</p>
 
 
-<h3><b>Task-02:</b></h3>
+<h3><b>Task-03:</b></h3>
 <p>So, we've created a white leaf, a colored leaf. It's time for making a star. All the codes are almost same, but notice that glScalef() and glTranslatef() functions are missing from the main function. Don't worry. They'll eventually show up. Also, notice that, the leaf has been created inside a leaf() function and it has been called from the display() function. And inside display function, you'll find:</p>
 
 
@@ -219,4 +223,4 @@ void display(){
 
 
 <p></p>
-<p>Here, </p>
+<p>Here, first we created the leaf, adjusted its position by scaling and rotating. And then we used glPushMatrix and glPopMatrix each time while creating a new leaf. The main idea is: when you use glTranslate() or glRotate() you affect the modelview matrix. This means that when you apply several transformations (translations &amp; rotations) this matrix changes too. So, the plan is to save the old matrix into the stack, draw the object and then pop the old matrix. Notice that, we haven't used glTranslatef() function and the reason is that the object was created in that manner. But you can obviously translate the object if needed while using glPushMatrix() and glPopMatrix() functions.</p>
