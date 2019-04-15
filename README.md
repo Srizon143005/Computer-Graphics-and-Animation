@@ -15,7 +15,7 @@
     <ul>
         <li><b><a href="#lab02-01">Task-01:</a></b> Create a leaf</li>
         <li><b><a href="#lab02-02">Task-02:</a></b> Color the leaf</li>
-        <li><b><a href="#lab02-03">Task-03:</a></b> Create the same leave for 5 times to make a Star</li>
+        <li><b><a href="#lab02-03">Task-03:</a></b> Create the same leaf for 5 times to make a Star</li>
     </ul>
 </ul>
 
@@ -37,7 +37,7 @@
 <ul>
     <li><b><a href="#lab05">Lab-05:</a></b></li>
     <ul>
-        <li><b><a href="#lab05-01">Task-01:</a></b> Create a 3D cube manually, set up the "gluLookAt" and "gluPerspective" functions and modify each value of these functions via keyboard</li>
+        <li><b><a href="#lab05-01">Task-01:</a></b> Create a 3D cube manually, set up the <code>gluLookAt()</code> and <code>gluPerspective()</code> functions and modify each value of these functions via keyboard</li>
     </ul>
 </ul>
 
@@ -253,7 +253,9 @@ void rotated(){
 
 
 <p></p>
-<p>So, here we're creating frames and rotating it by 0.1 degree each time with basic logic and <code>glRotatef()</code> function. <code>glPushMatrix()</code> and <code>glPopMatrix()</code> have been used here, we already know the reason behind this. <code>glClear(GL_COLOR_BUFFER_BIT)</code> has been used to clear the window, otherwise the drawing of previous frame will be overlapped by the new ones. Also, notice that we've used <code>GLUT_DOUBLE</code> for smooth transition inside main function. That's why <code>glutSwapBuffers()</code> function has been used to swap the buffers whenever a frame making is complete.</p>
+<p>So, here we're creating frames and rotating it by 0.1 degree each time with basic logic and <code>glRotatef()</code> function. <code>glPushMatrix()</code> and <code>glPopMatrix()</code> have been used here, we already know the reason behind this.</p>
+
+<p><code>glClear(GL_COLOR_BUFFER_BIT)</code> has been used to clear the window, otherwise the drawing of previous frame will be overlapped by the new ones. Also, notice that we've used <code>GLUT_DOUBLE</code> for smooth transition inside main function. That's why <code>glutSwapBuffers()</code> function has been used to swap the buffers whenever a frame making is complete.</p>
 
 
 <h2 id="lab04"><b>Lab-04</b></h2>
