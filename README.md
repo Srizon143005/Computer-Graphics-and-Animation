@@ -1,6 +1,8 @@
 <h1>Computer Graphics and Animation Codes and Description</h1>
 <p>In today's world, computer graphics is a common phenomenon. Computer graphics are used almost everywhere. For example, in 2D and 3D games, computer software, UI and UX design, camera positioning, clipping and so on. But how well do we know about the very basic concepts of computer graphics? How these complex structures are built? How the camera is set and what will be the effects of clipping? This repository contains codes of different concepts from Computer Graphics and step by step explanation for better understanding. You don't need to know any additional coding skills rather than simple C++ syntaxes to get started.</p>
 
+<p>Before moving further, I want to express heartfelt gratitude towards my respected teacher <b>Mahit Kumar Paul Sir</b>. This article is inspired by his guidelines.</p>
+
 <p>Here is the list of the labs and tasks which are covered in this repository:</p>
 <ul>
     <li><b><a href="#lab01">Lab-01:</a></b></li>
