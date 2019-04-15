@@ -64,3 +64,25 @@
 
 <p></p>
 <p>Now run the program and it should run without any error.</p>
+
+<h3 id="lab01-00"><b>Task-01:</b></h3>
+
+<p>This is our first code for this topic. First let's break down the main function. The main function looks like this:</p>
+
+<code>
+<pre>
+int main(int argc, char** argv)
+{
+    glutInit(&argc,argv);
+    glutInitDisplayMode(GLUT_SINGLE);
+    glutInitWindowSize(700,700);
+    glutInitWindowPosition(500,0);
+    glutCreateWindow("Lab-1, Code 1: Creating a triangle and displaying it.");
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    glutDisplayFunc(display);
+    glutMainLoop();
+    return 0;
+}
+</pre>
+</code>
