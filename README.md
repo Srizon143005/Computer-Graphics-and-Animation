@@ -15,7 +15,7 @@
     <ul>
         <li><b><a href="#lab02-01">Task-01:</a></b> Create a leaf</li>
         <li><b><a href="#lab02-02">Task-02:</a></b> Color the leaf</li>
-        <li><b><a href="#lab02-03">Task-03:</a></b> Create the same leave for 5 times to make a Star</li>
+        <li><b><a href="#lab02-03">Task-03:</a></b> Create the same leaf for 5 times to make a Star</li>
     </ul>
 </ul>
 
@@ -37,7 +37,7 @@
 <ul>
     <li><b><a href="#lab05">Lab-05:</a></b></li>
     <ul>
-        <li><b><a href="#lab05-01">Task-01:</a></b> Create a 3D cube manually, set up the "gluLookAt" and "gluPerspective" functions and modify each value of these functions via keyboard</li>
+        <li><b><a href="#lab05-01">Task-01:</a></b> Create a 3D cube manually, set up the <code>gluLookAt()</code> and <code>gluPerspective()</code> functions and modify each value of these functions via keyboard</li>
     </ul>
 </ul>
 
@@ -56,7 +56,7 @@
     <li>Copy "glut32.dll" to the directory <code>C:\Windows\System</code></li>
 </ol>
 
-<p>Now you've successfully installed glut package for CodeBlocks. If you're using Microsoft Visual Studio. Just follow the same steps as showed above for visiual studio directory. Now, run CodeBlocks, Go to File->New->Project..., Select "glut" and continue by clicking next. If you're asked to give mingw directory, just select the directory of mingw folder. After that, your project will be created, open main.cpp located in project_name/sources. Write the line following line on top:</p>
+<p>Now you've successfully installed glut package for CodeBlocks. If you're using Microsoft Visual Studio. Just follow the same steps as shown above for visual studio directory. Now, run CodeBlocks, Go to File->New->Project..., Select "glut" and continue by clicking next. If you're asked to give MinGW directory, just select the directory of MinGW folder. After that, your project will be created, open main.cpp located in project_name/sources. Write the line following line on top:</p>
 
 <code>
     #include "windows.h"
@@ -67,7 +67,7 @@
 
 <h3 id="lab01-01"><b>Task-01:</b></h3>
 
-<p>This is our first code for this topic. First let's break down the main function. The main function looks like this:</p>
+<p>This is our first code for this topic. First, let's break down the main function. The main function looks like this:</p>
 
 <pre>
 <code>
@@ -153,7 +153,7 @@ void display()
 </pre>
 
 <p></p>
-<p>Each of these functions have been declared by defining the structure of the shape. For example, let's look at the polygon1's vertexes:</p>
+<p>Each of these functions has been declared by defining the structure of the shape. For example, let's look at the polygon1's vertexes:</p>
 
 <pre>
     <code>
@@ -198,7 +198,7 @@ void polygon1(){
 
 
 <p></p>
-<p>That's how, you can create a colored leaf. There's only one thing you should bear in mind. If you use multiple colors in a polygon-type shape, all the colors of the edges will move towards the color of that edge with which you started to draw the polygon.</p>
+<p>That's how you can create a colored leaf. There's only one thing you should bear in mind. If you use multiple colors in a polygon-type shape, all the colors of the edges will move towards the color of that edge with which you started to draw the polygon.</p>
 
 
 <h3 id="lab02-03"><b>Task-03:</b></h3>
@@ -253,7 +253,9 @@ void rotated(){
 
 
 <p></p>
-<p>So, here we're creating frames and rotating it by 0.1 degree each time with basic logic and <code>glRotatef()</code> function. <code>glPushMatrix()</code> and <code>glPopMatrix()</code> have been used here, we already know the reason behind this. <code>glClear(GL_COLOR_BUFFER_BIT)</code> has been used to clear the window, otherwise the drawing of previous frame will be overlapped by the new ones. Also, notice that we've used <code>GLUT_DOUBLE</code> for smooth transition inside main function. That's why <code>glutSwapBuffers()</code> function has been used to swap the buffers whenever a frame making is complete.</p>
+<p>So, here we're creating frames and rotating it by 0.1 degree each time with basic logic and <code>glRotatef()</code> function. <code>glPushMatrix()</code> and <code>glPopMatrix()</code> have been used here, we already know the reason behind this.</p>
+
+<p><code>glClear(GL_COLOR_BUFFER_BIT)</code> has been used to clear the window, otherwise the drawing of previous frame will be overlapped by the new ones. Also, notice that we've used <code>GLUT_DOUBLE</code> for smooth transition inside main function. That's why <code>glutSwapBuffers()</code> function has been used to swap the buffers whenever a frame making is complete.</p>
 
 
 <h2 id="lab04"><b>Lab-04</b></h2>
@@ -361,7 +363,7 @@ void Keyboard(unsigned char c, int x, int y)
 
 
 <h3 id="lab04-02"><b>Task-02:</b></h3>
-<p>It's an interesting problem. So, first we've created an object. Now, we need to reflect the object with respect to a line. Suppose that, the line creates 45 degree angle with the X-axis and goes through (0,0.2) point. The reflection can be done in this manner: translate by (0,-0.2), rotate 45 degree clockwise, reflect with respect to X-axis which is basically scaling, rotate 45 degree anti-clockwise, translate by (0,0.2). Hence, it'll look like:</p>
+<p>It's an interesting problem. So, first, we've created an object. Now, we need to reflect the object with respect to a line. Suppose that, the line creates a 45-degree angle with the X-axis and goes through (0,0.2) point. The reflection can be done in this manner: translate by (0,-0.2), rotate 45 degrees clockwise, reflect with respect to X-axis which is basically scaling, rotate 45 degrees anti-clockwise, translate by (0,0.2). Hence, it'll look like:</p>
 
 
 <pre>
@@ -389,7 +391,7 @@ void Keyboard(unsigned char c, int x, int y)
 
 
 <p></p>
-<p>Notice that here we've done the exact same thing as described but in reverse order. I've already described the cause of that. We've also used 'A' key to reflect with respect to the line. And that's the end of this lab.</p>
+<p>Notice that here we've done the same thing as described but in reverse order. I've already described the cause of that. We've also used 'A' key to reflect with respect to the line. And that's the end of this lab.</p>
 
 
 <h2 id="lab05"><b>Lab-05</b></h2>
@@ -422,7 +424,7 @@ void display(void)
 
 
 <p></p>
-<p>So, as usual we're clearing the buffer, setting the color, loading identity matrix. Now, we'll set up the camera with the help of <code>gluLookAt()</code> function. It has 9 parameters. The first 3 parameters are X, Y, Z co-ordinates of camera position, next 3 denotes object center and the final 3 parameters denotes the direction of up vector. We already know the work of <code>glMatrixMode()</code> function. Now, we need to apply <code>gluPerspective()</code> function to set up the field volume, aspect ratio, near point and far point to display the cube. There's also a scaling factor available either. As for the keyboard interaction, I'm leaving that matter to you. All you need to do is to modify the values of the parameters of <code>gluLookAt()</code> and <code>gluPerspective()</code> functions via keyboard. However, in my code, I've implemented the parameter-modification via keyboard with the help of key buffers. If you wish, you can go through my code to understand how it works.</p>
+<p>So, as usual, we're clearing the buffer, setting the color, loading identity matrix. Now, we'll set up the camera with the help of <code>gluLookAt()</code> function. It has 9 parameters. The first 3 parameters are X, Y, Z coordinates of camera position, next 3 denotes object centre and the final 3 parameters denote the direction of up vector. We already know the work of <code>glMatrixMode()</code> function. Now, we need to apply <code>gluPerspective()</code> function to set up the field volume, aspect ratio, near point and far point to display the cube. There's also a scaling factor available either. As for the keyboard interaction, I'm leaving that matter to you. All you need to do is to modify the values of the parameters of <code>gluLookAt()</code> and <code>gluPerspective()</code> functions via keyboard. However, in my code, I've implemented the parameter-modification via keyboard with the help of key buffers. If you wish, you can go through my code to understand how it works.</p>
 
 
 <h2><b>Conclusion</b></h2>
