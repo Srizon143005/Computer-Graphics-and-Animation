@@ -20,24 +20,24 @@
 </ul>
 
 <ul>
-    <li><b>Lab-03:</b></li>
+    <li><b><a href="#lab03">Lab-03:</a></b></li>
     <ul>
-        <li><b>Task-01:</b> Rotate the star of the last lab continuously</li>
+        <li><b><a href="#lab03-01">Task-01:</a></b> Rotate the star of the last lab continuously</li>
     </ul>
 </ul>
 
 <ul>
-    <li><b>Lab-04:</b></li>
+    <li><b><a href="#lab04">Lab-04:</a></b></li>
     <ul>
-        <li><b>Task-01:</b> Show individual shapes of a leaf and Rotate, Scale or Translate them via keyboard</li>
-        <li><b>Task-02:</b> Rotate an object with respect to a line via keyboard</li>
+        <li><b><a href="#lab04-01">Task-01:</a></b> Show individual shapes of a leaf and Rotate, Scale or Translate them via keyboard</li>
+        <li><b><a href="#lab04-02">Task-02:</a></b> Rotate an object with respect to a line via keyboard</li>
     </ul>
 </ul>
 
 <ul>
-    <li><b>Lab-05:</b></li>
+    <li><b><a href="#lab05">Lab-05:</a></b></li>
     <ul>
-        <li><b>Task-01:</b> Create a 3D cube manually, set up the "gluLookAt" and "gluPerspective" functions and modify each value of these functions via keyboard</li>
+        <li><b><a href="#lab05-01">Task-01:</a></b> Create a 3D cube manually, set up the "gluLookAt" and "gluPerspective" functions and modify each value of these functions via keyboard</li>
     </ul>
 </ul>
 
@@ -224,3 +224,206 @@ void display(){
 
 <p></p>
 <p>Here, first we created the leaf, adjusted its position by scaling and rotating. And then we used <code>glPushMatrix()</code> and <code>glPopMatrix()</code> each time while creating a new leaf. The main idea is: when you use <code>glTranslate()</code> or <code>glRotate()</code> you affect the modelview matrix. This means that when you apply several transformations (translations &amp; rotations) this matrix changes too. So, the plan is to save the old matrix into the stack, draw the object and then pop the old matrix. Notice that, we haven't used <code>glTranslatef()</code> function and the reason is that the object was created in that manner. But you can obviously translate the object if needed while using <code>glPushMatrix()</code> and <code>glPopMatrix()</code> functions.</p>
+
+
+
+
+<h2 id="lab03"><b>Lab-03</b></h2>
+<p>In this lab, we'll rotate the star which was created in last lab.</p>
+
+<h3 id="lab03-01"><b>Task-01:</b></h3>
+<p>To achieve our goal, we will call <code>glutDisplayFunc(rotated)</code> instead of calling <code>glutDisplayFunc(display)</code>. <code>rotated()</code> function will rotate the star. Let's see:</p>
+
+
+<pre>
+    <code>
+void rotated(){
+    for(double i=0.0; ; i=i+0.1){
+        glClear(GL_COLOR_BUFFER_BIT);
+        glPushMatrix();
+        glRotatef(i,0,0,1);
+        display();
+        glPopMatrix();
+        glutSwapBuffers();
+        glFlush();
+    }
+}
+    </code>
+</pre>
+
+
+<p></p>
+<p>So, here we're creating frames and rotating it by 0.1 degree each time with basic logic and <code>glRotatef()</code> function. <code>glPushMatrix()</code> and <code>glPopMatrix()</code> have been used here, we already know the reason behind this. <code>glClear(GL_COLOR_BUFFER_BIT)</code> has been used to clear the window, otherwise the drawing of previous frame will be overlapped by the new ones. Also, notice that we've used <code>GLUT_DOUBLE</code> for smooth transition inside main function. That's why <code>glutSwapBuffers()</code> function has been used to swap the buffers whenever a frame making is complete.</p>
+
+
+<h2 id="lab04"><b>Lab-04</b></h2>
+<p>In this lab, we'll try to understand and implement different operations using keyboard buttons.</p>
+
+<h3 id="lab04-01"><b>Task-01:</b></h3>
+<p>First of all let's create a leaf. The leaf is created in the same way as before. Then to interact by keyboard, keyboard function has been called inside the main function: <code>glutKeyboardFunc(Keyboard)</code>. The keyboard function looks like this:</p>
+
+
+<pre>
+    <code>
+void Keyboard(unsigned char c, int x, int y)
+{
+    printf("%d\n",c);
+    switch(c)
+    {
+        case 50:
+            glClear(GL_COLOR_BUFFER_BIT);
+            glTranslatef(0,-.1,0);
+            glutDisplayFunc(display);
+            glutPostRedisplay();
+            break;
+        case 52:
+            glClear(GL_COLOR_BUFFER_BIT);
+            glTranslatef(-.1,0,0);
+            glutDisplayFunc(display);
+            glutPostRedisplay();
+            break;
+        case 54:
+            glClear(GL_COLOR_BUFFER_BIT);
+            glTranslatef(.1,0,0);
+            glutDisplayFunc(display);
+            glutPostRedisplay();
+            break;
+        case 56:
+            glClear(GL_COLOR_BUFFER_BIT);
+            glTranslatef(0,.1,0);
+            glutDisplayFunc(display);
+            glutPostRedisplay();
+            break;
+        case 114:
+            glClear(GL_COLOR_BUFFER_BIT);
+            glRotatef(15,0,0,1);
+            glutDisplayFunc(display);
+            glutPostRedisplay();
+            break;
+        case 101:
+            glClear(GL_COLOR_BUFFER_BIT);
+            glRotatef(-15,0,0,1);
+            glutDisplayFunc(display);
+            glutPostRedisplay();
+            break;
+        case 115:
+            glClear(GL_COLOR_BUFFER_BIT);
+            glScalef(1.5,1.5,0);
+            glutDisplayFunc(display);
+            glutPostRedisplay();
+            break;
+        case 100:
+            glClear(GL_COLOR_BUFFER_BIT);
+            glScalef(1/1.5,1/1.5,0);
+            glutDisplayFunc(display);
+            glutPostRedisplay();
+            break;
+        case 116:
+            glClear(GL_COLOR_BUFFER_BIT);
+            glutDisplayFunc(display1);
+            glutPostRedisplay();
+            glutKeyboardFunc(Keyboard1);
+            break;
+        case 113:
+            glClear(GL_COLOR_BUFFER_BIT);
+            glutDisplayFunc(display2);
+            glutPostRedisplay();
+            glutKeyboardFunc(Keyboard2);
+            break;
+        case 111:
+            glClear(GL_COLOR_BUFFER_BIT);
+            glutDisplayFunc(display3);
+            glutPostRedisplay();
+            glutKeyboardFunc(Keyboard3);
+            break;
+        case 112:
+            glClear(GL_COLOR_BUFFER_BIT);
+            glutDisplayFunc(display4);
+            glutPostRedisplay();
+            glutKeyboardFunc(Keyboard4);
+            break;
+        case 109:
+            glClear(GL_COLOR_BUFFER_BIT);
+            glutDisplayFunc(display);
+            glutPostRedisplay();
+            glutKeyboardFunc(Keyboard);
+            break;
+        case 120:
+            exit(1);
+    }
+}
+    </code>
+</pre>
+
+
+<p></p>
+<p><code>Keyboard()</code> function has three parameters built in. x and y are reserved for spacial purposes and c is the charecter that has been pressed via keyboard. Now, the case numbers denote the ASCII value of the keys. As usual, we're clearing the window whenever the buton is pressed and then we're applying translation, scaling or rotation on the object. Finally, we're displaying the updated object with the help of <code>glutPostRedisplay()</code> function. Notice that, for some keys the <code>Keyboard()</code> function calls <code>Keyboard1()</code>, <code>Keyboard2()</code>, <code>Keyboard3()</code>, <code>Keyboard4()</code> functions. The work of these functions are to handle the 4 shapes of the object individually. I suppose, no more description is needed on this topic. But before moving towards the next task, please be sure to have a detailed and clear idea about the keyboard handling.</p>
+
+
+<h3 id="lab04-02"><b>Task-02:</b></h3>
+<p>It's an interesting problem. So, first we've created an object. Now, we need to reflect the object with respect to a line. Suppose that, the line creates 45 degree angle with the X-axis and goes through (0,0.2) point. The reflection can be done in this manner: translate by (0,-0.2), rotate 45 degree clockwise, reflect with respect to X-axis which is basically scaling, rotate 45 degree anti-clockwise, translate by (0,0.2). Hence, it'll look like:</p>
+
+
+<pre>
+    <code>
+void Keyboard(unsigned char c, int x, int y)
+{
+    switch(c)
+    {
+        case 97:
+            glClear(GL_COLOR_BUFFER_BIT);
+            glTranslatef(0,0.2,0);
+            glRotatef(45,0,0,1);
+            glScalef(1.0,-1.0,1);
+            glRotatef(-45,0,0,1);
+            glTranslatef(0,-0.2,0);
+            glutDisplayFunc(display);
+            glutPostRedisplay();
+            break;
+        case 120:
+            exit(1);
+    }
+}
+    </code>
+</pre>
+
+
+<p></p>
+<p>Notice that here we've done the exact same thing as described but in reverse order. I've already described the cause of that. We've also used 'A' key to reflect with respect to the line. And that's the end of this lab.</p>
+
+
+<h2 id="lab05"><b>Lab-05</b></h2>
+<p>Finally, we've moved towards the last lab. In this lab, we'll create a 3D cube manually and will change differenet parameters with the help of keyboard.</p>
+
+<h3 id="lab05-01"><b>Task-01:</b></h3>
+<p>First things first. We'll need to create the 3D cube manually. To do so, we'll just consider that cube is nothing but a collection of six polygons. So, we'll create six polygons one by one and our 3D cube is ready. Pretty easy, right? I'm not citing that code here (as it's huge!). The next thing is to display the cube. Here is the display function:</p>
+
+
+<pre>
+    <code>
+void display(void)
+{
+    glClear(GL_COLOR_BUFFER_BIT);
+    glColor3f(1.0, 1.0, 1.0);
+    glLoadIdentity();
+    gluLookAt(eye_x, eye_y, eye_z, center_x, center_y, center_z, up_x, up_y, up_z);
+
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluPerspective(fovy_value, aspect_value, near_value, far_value);
+    glMatrixMode(GL_MODELVIEW);
+
+    glScalef(scale_x, scale_y, scale_z);
+    cube_design();
+    glFlush ();
+}
+    </code>
+</pre>
+
+
+<p></p>
+<p>So, as usual we're clearing the buffer, setting the color, loading identity matrix. Now, we'll set up the camera with the help of <code>gluLookAt()</code> function. It has 9 parameters. The first 3 parameters are X, Y, Z co-ordinates of camera position, next 3 denotes object center and the final 3 parameters denotes the direction of up vector. We already know the work of <code>glMatrixMode()</code> function. Now, we need to apply <code>gluPerspective()</code> function to set up the field volume, aspect ratio, near point and far point to display the cube. There's also a scaling factor available either. As for the keyboard interaction, I'm leaving that matter to you. All you need to do is to modify the values of the parameters of <code>gluLookAt()</code> and <code>gluPerspective()</code> functions via keyboard. However, in my code, I've implemented the parameter-modification via keyboard with the help of key buffers. If you wish, you can go through my code to understand how it works.</p>
+
+
+<h2><b>Conclusion</b></h2>
+<p>So, that's it. If you've read the whole article and solved all the problems, then congratulations. Now, you know how to create 2D and 3D objects, transform them (translate, rotate, scale), modify parameters using keyboards, modify positions and parameters of camera and object in OpenGL.</p>
