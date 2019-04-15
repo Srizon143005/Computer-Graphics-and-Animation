@@ -69,8 +69,8 @@
 
 <p>This is our first code for this topic. First let's break down the main function. The main function looks like this:</p>
 
-<code>
 <pre>
+<code>
 int main(int argc, char** argv)
 {
     glutInit(&argc,argv);
@@ -84,5 +84,5 @@ int main(int argc, char** argv)
     glutMainLoop();
     return 0;
 }
-</pre>
 </code>
+</pre>
