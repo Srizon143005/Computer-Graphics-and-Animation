@@ -114,3 +114,109 @@ void display(){
 <p>That's all you needed to know for this lab. Moving onto next one.</p>
 
 
+
+
+<h2><b>Lab-02</b></h2>
+<p>In this lab, we'll create leaf both: white and colored. Then we'll create 5 consecuting leaves and try to display it.</p>
+
+<h3><b>Task-01:</b></h3>
+<p>Let's start by creating a white leaf. The main function is almost same as before although there're somemajor lines written before calling the main function:</p>
+
+
+<pre>
+    <code>
+glScalef(0.8,0.8,1);
+glTranslatef(0,-1.0,0);
+glutDisplayFunc(display);
+    </code>
+</pre>
+
+
+<p></p>
+<p>glScalef() scales the whole object declared inside the display function. glTranslatef() will translate the whole object as specified either. But here, first glTranslatef will do its job, then glScalef() will do its part. The reason is that in OpenGL the transformations, which are done on the object, are declared before the display function and they are executed in the reverse order. Now, let's talk about how to create the leaf. Here, in this example, we've created the leaf by the combination of a triangle, a quad and two polygons. Let's see the display function:</p>
+
+<pre>
+    <code>
+void display()
+{
+    triangle();
+    quad();
+    polygon1();
+    polygon2();
+    glFlush();
+}
+    </code>
+</pre>
+
+<p></p>
+<p>Each of these functions have been declared by defining the structure of the shape. For example, let's look at the polygon1's vertexes:</p>
+
+<pre>
+    <code>
+void polygon1(){
+    glBegin(GL_POLYGON);
+        glVertex2f(0.0, 0.91);
+        glVertex2f(1.07, 1.1);
+        glVertex2f(0.37, 1.33);
+        glVertex2f(-0.37, 1.33);
+        glVertex2f(-1.07, 1.1);
+    glEnd();
+}
+    </code>
+</pre>
+
+<p></p>
+<p>As we didn't set any color the leaf is white. The picture of the white leaf, colored leaf and star of leaves has been provided inside the ab-02 folder for understanding and practising purposes.</p>
+
+
+<h3><b>Task-02:</b></h3>
+<p>Now that we've created a white leaf, it's time for creating a colored leaf. Color leaf making is easy. Everything will remain same as before, the only difference is that we need to add color. For example, let's consider the polygon1:</p>
+
+
+<pre>
+    <code>
+void polygon1(){
+    glBegin(GL_POLYGON);
+        glColor3f(0.0, 1.0, 0.0);
+        glVertex2f(0.0, 0.91);
+        glColor3f(1.0, 0.0, 0.0);
+        glVertex2f(1.07, 1.1);
+        glColor3f(0.0, 0.0, 1.0);
+        glVertex2f(0.37, 1.33);
+        glColor3f(0.0, 1.0, 0.0);
+        glVertex2f(-0.37, 1.33);
+        glColor3f(1.0, 0.0, 0.0);
+        glVertex2f(-1.07, 1.1);
+    glEnd();
+}
+    </code>
+</pre>
+
+
+<p></p>
+<p>That's how, you can create a colored leaf. There's only one thing you should bear in mind. If you use multiple colors in a polygon-type shape, all the colors of the edges will move towards the color of that edge with which you started to draw the polygon.</p>
+
+
+<h3><b>Task-02:</b></h3>
+<p>So, we've created a white leaf, a colored leaf. It's time for making a star. All the codes are almost same, but notice that glScalef() and glTranslatef() functions are missing from the main function. Don't worry. They'll eventually show up. Also, notice that, the leaf has been created inside a leaf() function and it has been called from the display() function. And inside display function, you'll find:</p>
+
+
+<pre>
+    <code>
+void display(){
+    for(int i=0; i<=360; i+=72){
+        glPushMatrix();
+        glRotatef(i,0,0,1);
+        glScalef(0.152,0.4,1);
+        leaf();
+        glPopMatrix();
+    }
+
+    glFlush();
+}
+    </code>
+</pre>
+
+
+<p></p>
+<p>Here, </p>
