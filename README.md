@@ -86,3 +86,31 @@ int main(int argc, char** argv)
 }
 </code>
 </pre>
+
+<p></p>
+<p>Here, glutInit() is used to initialize the GLUT library. glutInitDisplayMode() is used to declare variousmodes of display. You can add multiple modes using '|'. When using GL_SINGLE, you can picture your code drawing directly to the display having no buffers. If you use GL_DOUBLE, then you've double buffer and you can swap between buffer for smooth transition in case of rotation of movement. In case of movement you need to handle frames and GL_DOUBLE is the best option among these two for smooth transition. glutInitWindowSize() is used for initializing the window size having two paramenters: windows height and width. glutInitWindowPosition() is used to initialize the initial position of the window. glutCreateWindow() is used for creating the window with the name given inside the function. glMatrixMode() specify which matrix is the current matrix. It can have different parameters. Here, we will learn two of them: GL_MODELVIEW and GL_PROJECTION. GL_PROJECTION is used for setting your viewing volume. As for the GL_MODELVIEW matrix, it is used to make various transformations to the oject. glLoadIdentity() replaces the current matrix with an identity matrix. glutDisplayFunc() function displays whatever is defined inside the function called inside this as parameter. glutMainLoop() enters the GLUT event processing loop. Now let's move towards display function:</p>
+
+<pre>
+    <code>
+void display(){
+    glBegin(GL_TRIANGLES);
+        glColor3f(0.0, 0.0, 1.0);
+        glVertex2f(-0.5,-0.25);
+        glColor3f(1.0, 0.0, 0.0);
+        glVertex2f(0.5,-0.25);
+        glColor3f(0.0, 1.0, 0.0);
+        glVertex2f(0, 0.25);
+    glEnd();
+
+    glFlush();
+}
+    </code>
+</pre>
+
+<p></p>
+<p>Here, inside the display function, we define what we want to display. In this example, a triangle has been created with the corresponding functions where glBegin() denotes starting of the drawing and glEnd() denotes end of the drawing. GL_TRIANGLES refers to creating triangles. glColor3f() sets the color in RGB format where 0 denotes no color or black and 1 denotes full color or white for the three parameters R, G and B. glVertex2f() defines the point in 2D co-ordinate.</p>
+
+
+<p>That's all you needed to know for this lab. Moving onto next one.</p>
+
+
