@@ -54,7 +54,7 @@
     <li>Download and intall CodeBlocks from their <a href="http://www.codeblocks.org/downloads">official site.</a> Choose the version you need. If you don't know which one to choose, simply download Codeblocks *.* mingw setup.exe where *.* refers to the latest version of CodeBlocks.</li>
     <li>Now go to "glut-3.7.6-bin" folder which is attached in this repository.</li>
     <li>Copy the "glut.h" file to the include directory <code>C:\Program Files (x86)\CodeBlocks\MinGW\include\GL</code> (Choose your installation directory).</li>
-    <li>Copy the "" file to the lib directory <code>C:\Program Files (x86)\CodeBlocks\MinGW\lib</code> (Choose your installation directory).</li>
+    <li>Copy the "glut32.lib" file to the lib directory <code>C:\Program Files (x86)\CodeBlocks\MinGW\lib</code> (Choose your installation directory).</li>
     <li>Copy "glut32.dll" to the directory <code>C:\Windows\System</code></li>
 </ol>
 
